@@ -318,7 +318,7 @@
                     <a href="#create-person" class="toc-h2 toc-link" data-title="Create Person">Create Person</a>
                   </li>
                   <li>
-                    <a href="#get-all-person" class="toc-h2 toc-link" data-title="Get All Person">Get All Person</a>
+                    <a href="#list-people" class="toc-h2 toc-link" data-title="List People">List People</a>
                   </li>
                   <li>
                     <a href="#show-person" class="toc-h2 toc-link" data-title="Show Person">Show Person</a>
@@ -332,7 +332,10 @@
                     <a href="#create-tweet" class="toc-h2 toc-link" data-title="Create Tweet">Create Tweet</a>
                   </li>
                   <li>
-                    <a href="#get-related-tweet" class="toc-h2 toc-link" data-title="Get Related Tweet">Get Related Tweet</a>
+                    <a href="#list-tweets" class="toc-h2 toc-link" data-title="list Tweets">list Tweets</a>
+                  </li>
+                  <li>
+                    <a href="#delete-tweet" class="toc-h2 toc-link" data-title="Delete Tweet">Delete Tweet</a>
                   </li>
               </ul>
           </li>
@@ -343,7 +346,7 @@
                     <a href="#create-follower-person" class="toc-h2 toc-link" data-title="Create Follower Person">Create Follower Person</a>
                   </li>
                   <li>
-                    <a href="#get-everyone-i-follow" class="toc-h2 toc-link" data-title="Get Everyone I follow">Get Everyone I follow</a>
+                    <a href="#list-following-people" class="toc-h2 toc-link" data-title="List Following People">List Following People</a>
                   </li>
               </ul>
           </li>
@@ -435,7 +438,7 @@ This API don't have a authentication endpoint, to simulate a user token you have
 <td>Person phone number.</td>
 </tr>
 </tbody></table>
-<h2 id='get-all-person'>Get All Person</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/people"</span> <span class="se">\</span>
+<h2 id='list-people'>List People</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/people"</span> <span class="se">\</span>
      <span class="nt">--header</span> <span class="s2">"person: 1"</span>
 </code></pre></div>
 <blockquote>
@@ -573,7 +576,7 @@ This API don't have a authentication endpoint, to simulate a user token you have
 <td>Tweet content text.</td>
 </tr>
 </tbody></table>
-<h2 id='get-related-tweet'>Get Related Tweet</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/tweets"</span> <span class="se">\</span>
+<h2 id='list-tweets'>list Tweets</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/tweets"</span> <span class="se">\</span>
      <span class="nt">--header</span> <span class="s2">"person: 1"</span>
 </code></pre></div>
 <blockquote>
@@ -627,6 +630,28 @@ This API don't have a authentication endpoint, to simulate a user token you have
 <td>ransack</td>
 <td>false</td>
 <td>If set to true, the result will also include cats.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-tweet'>Delete Tweet</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/tweets/:id"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s2">"person: 1"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns a empty body.</p>
+</blockquote>
+
+<p>This endpoint delete the tweet if belongs to logged in person</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://localhost:3000/v1/tweets/:id</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The ID of the tweet to delete</td>
 </tr>
 </tbody></table>
 <h1 id='following-people'>Following People</h1><h2 id='create-follower-person'>Create Follower Person</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s2">"http://localhost:3000/v1/following_people"</span> <span class="se">\</span>
@@ -698,7 +723,7 @@ This API don't have a authentication endpoint, to simulate a user token you have
 <td>Person to follow.</td>
 </tr>
 </tbody></table>
-<h2 id='get-everyone-i-follow'>Get Everyone I follow</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/following_people"</span> <span class="se">\</span>
+<h2 id='list-following-people'>List Following People</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/following_people"</span> <span class="se">\</span>
      <span class="nt">--header</span> <span class="s2">"person: 1"</span>
 </code></pre></div>
 <blockquote>
