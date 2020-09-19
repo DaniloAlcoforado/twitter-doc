@@ -15,6 +15,7 @@ includes:
   - people/show
   - tweets/create
   - tweets/list
+  - tweets/delete
   - following_people/create
   - following_people/list
   - errors

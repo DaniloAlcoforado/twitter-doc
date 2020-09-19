@@ -1,4 +1,4 @@
-## Get Everyone I follow
+## List Following People
 
 ```shell
 curl --location --request GET "http://localhost:3000/v1/following_people" \

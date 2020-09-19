@@ -1,4 +1,4 @@
-## Get Related Tweet
+## list Tweets
 
 ```shell
 curl --location --request GET "http://localhost:3000/v1/tweets" \
