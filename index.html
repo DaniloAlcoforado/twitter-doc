@@ -350,6 +350,9 @@
                   <li>
                     <a href="#list-following-people" class="toc-h2 toc-link" data-title="List Following People">List Following People</a>
                   </li>
+                  <li>
+                    <a href="#delete-following-people" class="toc-h2 toc-link" data-title="Delete Following People">Delete Following People</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -952,6 +955,25 @@ Click below to see the condition list for searching</p>
 <td>q.per_page</td>
 <td>integer</td>
 <td>Data quantity per page</td>
+</tr>
+</tbody></table>
+<h2 id='delete-following-people'>Delete Following People</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> DELETE <span class="s2">"http://localhost:3000/v1/following_people/{following_person_id}"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s2">"person: {person_id}"</span>
+</code></pre></div>
+<p>This endpoint delete the following person if is followed by logged in person</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://localhost:3000/v1/following_people/{following_person_id}</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>following_person_id</td>
+<td>The ID of the following person to delete</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
