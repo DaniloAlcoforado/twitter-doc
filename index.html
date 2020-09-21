@@ -288,7 +288,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;]">
+  <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -297,9 +297,6 @@
     </a>
     <div class="toc-wrapper">
       <img src="images/logo-1e815a84.png" class="logo" alt="" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-        </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -310,6 +307,11 @@
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#header-parameters" class="toc-h2 toc-link" data-title="Header Parameters">Header Parameters</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#people" class="toc-h1 toc-link" data-title="People">People</a>
@@ -369,15 +371,30 @@
 <p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
-<p>Make sure to replace <code>{id}</code> with a created person id.</p>
+<p>Make sure to replace <code>{person_id}</code> with a created person id.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
-     <span class="nt">--header</span> <span class="s2">"person: {id}"</span>
+     <span class="nt">--header</span> <span class="s2">"person: {person_id}"</span>
 </code></pre></div>
 <aside class="notice">
 This API don't have a authentication endpoint, to simulate a user token you have only to send the person id as person in the request header.
 </aside>
+<h3 id='header-parameters'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>person</td>
+<td>integer</td>
+<td>The ID of the logged in person</td>
+</tr>
+</tbody></table>
 <h1 id='people'>People</h1><h2 id='create-person'>Create Person</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s2">"http://localhost:3000/v1/people"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
      <span class="nt">--data-raw</span> <span class="s2">"{body}"</span>
 </code></pre></div>
 <blockquote>
@@ -392,7 +409,7 @@ This API don't have a authentication endpoint, to simulate a user token you have
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Response JSON structure:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -413,7 +430,7 @@ This API don't have a authentication endpoint, to simulate a user token you have
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -438,8 +455,13 @@ This API don't have a authentication endpoint, to simulate a user token you have
 <td>Person phone number.</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+You don't need to pass the person id at header to create a person.
+</aside>
 <h2 id='list-people'>List People</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/people"</span> <span class="se">\</span>
-     <span class="nt">--header</span> <span class="s2">"person: {id}"</span>
+     <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s2">"person: {person_id}"</span> <span class="se">\</span>
      <span class="nt">--data-raw</span> <span class="s2">"{body}"</span>
 </code></pre></div>
 <blockquote>
@@ -447,17 +469,17 @@ This API don't have a authentication endpoint, to simulate a user token you have
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"content_cont"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organic"</span><span class="w">
+        </span><span class="nl">"name_cont"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moshe"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="nl">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created_at desc"</span><span class="w">
+    </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name asc"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Response JSON structure:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -494,7 +516,7 @@ Click below to see the condition list for searching</p>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -529,11 +551,12 @@ Click below to see the condition list for searching</p>
 <td>Data quantity per page</td>
 </tr>
 </tbody></table>
-<h2 id='show-person'>Show Person</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/people/{id}"</span> <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s2">"person: {id}"</span>
+<h2 id='show-person'>Show Person</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/people/{person_id}"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s2">"person: {person_id}"</span>
 </code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Response JSON structure:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -563,7 +586,9 @@ Click below to see the condition list for searching</p>
 </tr>
 </tbody></table>
 <h1 id='tweets'>Tweets</h1><h2 id='create-tweet'>Create Tweet</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s2">"http://localhost:3000/v1/tweets"</span> <span class="se">\</span>
-     <span class="nt">--data-raw</span> <span class="s2">"{body}"</span>
+     <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s2">"person: {id}"</span> <span class="se">\</span>
+     <span class="nt">--data</span> <span class="s2">"{body}"</span>
 </code></pre></div>
 <blockquote>
 <p>Body example</p>
@@ -575,7 +600,7 @@ Click below to see the condition list for searching</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Response JSON structure.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -606,14 +631,14 @@ Click below to see the condition list for searching</p>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>tweet</td>
 <td>hash</td>
-<td>Hash with all person data.</td>
+<td>Hash with all tweet data.</td>
 </tr>
 <tr>
 <td>tweet.content</td>
@@ -622,7 +647,8 @@ Click below to see the condition list for searching</p>
 </tr>
 </tbody></table>
 <h2 id='list-tweets'>list Tweets</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/tweets"</span> <span class="se">\</span>
-     <span class="nt">--header</span> <span class="s2">"person: {id}"</span>
+     <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s2">"person: {person_id}"</span> <span class="se">\</span>
      <span class="nt">--data-raw</span> <span class="s2">"{body}"</span>
 </code></pre></div>
 <blockquote>
@@ -633,14 +659,14 @@ Click below to see the condition list for searching</p>
         </span><span class="nl">"content_cont"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organic"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="nl">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created_at desc"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Response JSON structure.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -687,7 +713,7 @@ Click below to see the condition list for searching</p>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -722,16 +748,17 @@ Click below to see the condition list for searching</p>
 <td>Data quantity per page</td>
 </tr>
 </tbody></table>
-<h2 id='delete-tweet'>Delete Tweet</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/tweets/{id}"</span> <span class="se">\</span>
-     <span class="nt">--header</span> <span class="s2">"person: 1"</span>
+<h2 id='delete-tweet'>Delete Tweet</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> DELETE <span class="s2">"http://localhost:3000/v1/tweets/{tweet_id}"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s2">"person: {person_id}"</span>
 </code></pre></div>
 <blockquote>
-<p>The above command returns a empty body.</p>
+<p>Response JSON structure.</p>
 </blockquote>
 
 <p>This endpoint delete the tweet if belongs to logged in person</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://localhost:3000/v1/tweets/{id}</code></p>
+<p><code>GET http://localhost:3000/v1/tweets/{tweet_id}</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -745,6 +772,8 @@ Click below to see the condition list for searching</p>
 </tr>
 </tbody></table>
 <h1 id='following-people'>Following People</h1><h2 id='create-follower-person'>Create Follower Person</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s2">"http://localhost:3000/v1/following_people"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s2">"person: {person_id}"</span> <span class="se">\</span>
      <span class="nt">--data-raw</span> <span class="s2">"{body}"</span>
 </code></pre></div>
 <blockquote>
@@ -757,7 +786,7 @@ Click below to see the condition list for searching</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Response JSON structure:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -798,14 +827,14 @@ Click below to see the condition list for searching</p>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>following_person</td>
 <td>hash</td>
-<td>Hash with all person data.</td>
+<td>Hash with all following person data.</td>
 </tr>
 <tr>
 <td>following_person.person_id</td>
@@ -814,7 +843,8 @@ Click below to see the condition list for searching</p>
 </tr>
 </tbody></table>
 <h2 id='list-following-people'>List Following People</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/following_people"</span> <span class="se">\</span>
-     <span class="nt">--header</span> <span class="s2">"person: {id}"</span>
+     <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s2">"person: {person_id}"</span> <span class="se">\</span>
      <span class="nt">--data-raw</span> <span class="s2">"{body}"</span>
 </code></pre></div>
 <blockquote>
@@ -822,17 +852,17 @@ Click below to see the condition list for searching</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"content_cont"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organic"</span><span class="w">
+        </span><span class="nl">"person_name_cont"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moshe"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="nl">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created_at desc"</span><span class="w">
+    </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person_name asc"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Response JSON structure:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -889,7 +919,7 @@ Click below to see the condition list for searching</p>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -957,9 +987,6 @@ Click below to see the condition list for searching</p>
 
       </div>
       <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-          </div>
       </div>
     </div>
   </body>
