@@ -1,4 +1,4 @@
-## Delete Following People
+## Delete Followers
 
 ```shell
 curl --location --request DELETE "http://localhost:3000/v1/following_people/{following_person_id}" \
