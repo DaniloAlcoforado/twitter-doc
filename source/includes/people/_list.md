@@ -2,7 +2,23 @@
 
 ```shell
 curl --location --request GET "http://localhost:3000/v1/people" \
-     --header "person: 1"
+     --header "person: {id}"
+     --data-raw "{body}"
+```
+
+> Body example
+
+```json
+{
+    "q": {
+        "content_cont": "Organic"
+    },
+    "p": {
+        "page": 2,
+        "per_page": 5
+    },
+    "s": "created_at desc"
+}
 ```
 
 > The above command returns JSON structured like this:
@@ -40,6 +56,16 @@ This endpoint retrieves all people excepted the logged in person.
 
 ### Query Parameters
 
+We are using ransack for searching, paginate and sorting the data,
+Click below to see the condition list for searching
+
+[Filter List](https://github.com/activerecord-hackery/ransack#search-matchers)
+
 Parameter | Default | Description
 --------- | ------- | -----------
-ransack | false | If set to true, the result will also include cats.
+q | hash | Ransack search content data
+q.{field}_{condition} | text | Search parameters
+s | text | Ransack sort data
+p | hash | Ransack pagination data
+q.page | integer | List page number
+q.per_page | integer | Data quantity per page

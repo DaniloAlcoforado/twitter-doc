@@ -4,7 +4,7 @@
 
 ```shell
 curl --location --request POST "http://localhost:3000/v1/following_people" \
-     --data-raw 'body'
+     --data-raw "{body}"
 ```
 
 > Body example

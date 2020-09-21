@@ -1,7 +1,7 @@
 ## Delete Tweet
 
 ```shell
-curl --location --request GET "http://localhost:3000/v1/tweets/:id" \
+curl --location --request GET "http://localhost:3000/v1/tweets/{id}" \
      --header "person: 1"
 ```
 
@@ -11,7 +11,7 @@ This endpoint delete the tweet if belongs to logged in person
 
 ### HTTP Request
 
-`GET http://localhost:3000/v1/tweets/:id`
+`GET http://localhost:3000/v1/tweets/{id}`
 
 ### URL Parameters
 

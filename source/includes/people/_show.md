@@ -1,8 +1,8 @@
 ## Show Person
 
 ```shell
-curl --location --request GET "http://localhost:3000/v1/people/:id" \
-  --header "person: 1"
+curl --location --request GET "http://localhost:3000/v1/people/{id}" \
+  --header "person: {id}"
 ```
 
 > The above command returns JSON structured like this:
@@ -25,7 +25,7 @@ This endpoint retrieves a person.
 
 ### HTTP Request
 
-`GET http://localhost:3000/v1/people/:id`
+`GET http://localhost:3000/v1/people/{id}`
 
 ### URL Parameters
 

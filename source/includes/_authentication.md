@@ -1,10 +1,10 @@
 # Authentication
 
-> Make sure to replace `:id` with a created person id.
+> Make sure to replace `{id}` with a created person id.
 
 ```shell
 curl --location --request GET "api_endpoint_here" \
-     --header "person: :id"
+     --header "person: {id}"
 ```
 
 <aside class="notice">
