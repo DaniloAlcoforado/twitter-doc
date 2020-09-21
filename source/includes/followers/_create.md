@@ -47,3 +47,9 @@ Parameter | Type | Description
 --------- | ------- | -----------
 follower | hash | Hash with all following person data.
 follower.followed_id | integer | Person to follow.
+
+### Response Status
+
+Code | Meaning
+--------- | -------
+201 | Created.

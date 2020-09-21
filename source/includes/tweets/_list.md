@@ -80,3 +80,9 @@ s | text | Ransack sort data
 p | hash | Ransack pagination data
 q.page | integer | List page number
 q.per_page | integer | Data quantity per page
+
+### Response Status
+
+Code | Meaning
+--------- | -------
+200 | Ok

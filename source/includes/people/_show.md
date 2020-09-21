@@ -33,3 +33,9 @@ This endpoint retrieves a person.
 Parameter | Description
 --------- | -----------
 id | The ID of the person to retrieve
+
+### Response Status
+
+Code | Meaning
+--------- | -------
+200 | Ok

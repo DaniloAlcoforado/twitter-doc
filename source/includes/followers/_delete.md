@@ -17,3 +17,9 @@ This endpoint delete the following person if is followed by logged in person
 Parameter | Description
 --------- | -----------
 following_person_id | The ID of the following person to delete
+
+### Response Status
+
+Code | Meaning
+--------- | -------
+204 | No Content.

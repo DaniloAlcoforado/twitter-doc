@@ -51,6 +51,12 @@ person.name | string | Person name.
 person.email | string | Person e-mail.
 person.phone | string | Person phone number.
 
+### Response Status
+
+Code | Meaning
+--------- | -------
+201 | Created.
+
 <aside class="warning">
 You don't need to pass the person id at header to create a person.
 </aside>

@@ -19,3 +19,9 @@ This endpoint delete the tweet if belongs to logged in person
 Parameter | Description
 --------- | -----------
 id | The ID of the tweet to delete
+
+### Response Status
+
+Code | Meaning
+--------- | -------
+204 | No Content.

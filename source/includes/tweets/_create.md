@@ -57,3 +57,9 @@ Parameter | Type | Description
 --------- | ------- | -----------
 tweet | hash | Hash with all tweet data.
 tweet.content | string | Tweet content text.
+
+### Response Status
+
+Code | Meaning
+--------- | -------
+201 | Created.
