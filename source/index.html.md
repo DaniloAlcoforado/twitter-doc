@@ -15,9 +15,10 @@ includes:
   - tweets/create
   - tweets/list
   - tweets/delete
-  - following_people/create
-  - following_people/list
-  - following_people/delete
+  - followers/create
+  - followers/list
+  - followers/list_followed
+  - followers/delete
   - errors
 
 search: true
