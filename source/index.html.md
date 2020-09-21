@@ -17,6 +17,7 @@ includes:
   - tweets/delete
   - following_people/create
   - following_people/list
+  - following_people/delete
   - errors
 
 search: true
