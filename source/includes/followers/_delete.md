@@ -6,7 +6,7 @@ curl --location --request DELETE "http://localhost:3000/v1/following_people/{fol
      --header "person: {person_id}"
 ```
 
-This endpoint delete the following person if is followed by logged in person
+This endpoint deletes the following person if it is followed by the logged in person
 
 ### HTTP Request
 
@@ -16,7 +16,7 @@ This endpoint delete the following person if is followed by logged in person
 
 Parameter | Description
 --------- | -----------
-following_person_id | The ID of the following person to delete
+following_person_id | The ID of the following person to be deleted
 
 ### Response Status
 

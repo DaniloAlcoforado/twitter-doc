@@ -36,7 +36,7 @@ curl --location --request POST "http://localhost:3000/v1/people" \
 }
 ```
 
-This endpoint create a person.
+This endpoint creates a person.
 
 ### HTTP Request
 
@@ -58,5 +58,5 @@ Code | Meaning
 201 | Created.
 
 <aside class="warning">
-You don't need to pass the person id at header to create a person.
+There is no need to pass the person id at the request header in this endpoint.
 </aside>

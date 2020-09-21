@@ -45,7 +45,7 @@ curl --location --request POST "http://localhost:3000/v1/tweets" \
 }
 ```
 
-This endpoint create a tweet.
+This endpoint creates a tweet.
 
 ### HTTP Request
 

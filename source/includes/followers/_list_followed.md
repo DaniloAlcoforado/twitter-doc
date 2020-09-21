@@ -49,7 +49,7 @@ curl --location --request GET "http://localhost:3000/v1/followeds" \
 }
 ```
 
-This endpoint return all person that the logged in person follows.
+This endpoint returns all people that the logged in person follows.
 
 ### HTTP Request
 
@@ -57,7 +57,7 @@ This endpoint return all person that the logged in person follows.
 
 ### Query Parameters
 
-We are using ransack for searching, paginate and sorting the data,
+Ransank is being used for searching, paginate and sorting the data,
 Click below to see the condition list for searching
 
 [Filter List](https://github.com/activerecord-hackery/ransack#search-matchers)

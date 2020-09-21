@@ -59,7 +59,7 @@ curl --location --request GET "http://localhost:3000/v1/tweets" \
 }
 ```
 
-This endpoint retrieves all logged in person tweet and all following person tweet.
+This endpoint retrieves all tweets of the logged in person and all tweets of the people this person follows.
 
 ### HTTP Request
 
@@ -67,7 +67,7 @@ This endpoint retrieves all logged in person tweet and all following person twee
 
 ### Query Parameters
 
-We are using ransack for searching, paginate and sorting the data,
+Ransank is being used for searching, paginate and sorting the data,
 Click below to see the condition list for searching
 
 [Filter List](https://github.com/activerecord-hackery/ransack#search-matchers)

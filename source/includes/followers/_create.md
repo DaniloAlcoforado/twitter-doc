@@ -35,7 +35,7 @@ curl --location --request POST "http://localhost:3000/v1/followers" \
 }
 ```
 
-This endpoint create a follower relation between logged in person and followed person.
+This endpoint creates a follower relation between logged in person and followed person.
 
 ### HTTP Request
 

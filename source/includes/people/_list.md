@@ -57,7 +57,7 @@ This endpoint retrieves all people excepted the logged in person.
 
 ### Query Parameters
 
-We are using ransack for searching, paginate and sorting the data,
+Ransank is being used for searching, paginate and sorting the data,
 Click below to see the condition list for searching
 
 [Filter List](https://github.com/activerecord-hackery/ransack#search-matchers)
