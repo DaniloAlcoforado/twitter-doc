@@ -369,16 +369,16 @@
 <p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
-<p>Make sure to replace <code>:id</code> with a created person id.</p>
+<p>Make sure to replace <code>{id}</code> with a created person id.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
-     <span class="nt">--header</span> <span class="s2">"person: :id"</span>
+     <span class="nt">--header</span> <span class="s2">"person: {id}"</span>
 </code></pre></div>
 <aside class="notice">
 This API don't have a authentication endpoint, to simulate a user token you have only to send the person id as person in the request header.
 </aside>
 <h1 id='people'>People</h1><h2 id='create-person'>Create Person</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s2">"http://localhost:3000/v1/people"</span> <span class="se">\</span>
-     <span class="nt">--data-raw</span> <span class="s1">'body'</span>
+     <span class="nt">--data-raw</span> <span class="s2">"{body}"</span>
 </code></pre></div>
 <blockquote>
 <p>Body example</p>
@@ -439,8 +439,23 @@ This API don't have a authentication endpoint, to simulate a user token you have
 </tr>
 </tbody></table>
 <h2 id='list-people'>List People</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/people"</span> <span class="se">\</span>
-     <span class="nt">--header</span> <span class="s2">"person: 1"</span>
+     <span class="nt">--header</span> <span class="s2">"person: {id}"</span>
+     <span class="nt">--data-raw</span> <span class="s2">"{body}"</span>
 </code></pre></div>
+<blockquote>
+<p>Body example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"content_cont"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organic"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created_at desc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -471,6 +486,11 @@ This API don't have a authentication endpoint, to simulate a user token you have
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET http://localhost:3000/v1/people</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
+<p>We are using ransack for searching, paginate and sorting the data,
+Click below to see the condition list for searching</p>
+
+<p><a href="https://github.com/activerecord-hackery/ransack#search-matchers">Filter List</a></p>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -479,13 +499,38 @@ This API don't have a authentication endpoint, to simulate a user token you have
 </tr>
 </thead><tbody>
 <tr>
-<td>ransack</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>q</td>
+<td>hash</td>
+<td>Ransack search content data</td>
+</tr>
+<tr>
+<td>q.{field}_{condition}</td>
+<td>text</td>
+<td>Search parameters</td>
+</tr>
+<tr>
+<td>s</td>
+<td>text</td>
+<td>Ransack sort data</td>
+</tr>
+<tr>
+<td>p</td>
+<td>hash</td>
+<td>Ransack pagination data</td>
+</tr>
+<tr>
+<td>q.page</td>
+<td>integer</td>
+<td>List page number</td>
+</tr>
+<tr>
+<td>q.per_page</td>
+<td>integer</td>
+<td>Data quantity per page</td>
 </tr>
 </tbody></table>
-<h2 id='show-person'>Show Person</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/people/:id"</span> <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s2">"person: 1"</span>
+<h2 id='show-person'>Show Person</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/people/{id}"</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s2">"person: {id}"</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -504,7 +549,7 @@ This API don't have a authentication endpoint, to simulate a user token you have
 </span></code></pre></div>
 <p>This endpoint retrieves a person.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://localhost:3000/v1/people/:id</code></p>
+<p><code>GET http://localhost:3000/v1/people/{id}</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -518,7 +563,7 @@ This API don't have a authentication endpoint, to simulate a user token you have
 </tr>
 </tbody></table>
 <h1 id='tweets'>Tweets</h1><h2 id='create-tweet'>Create Tweet</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s2">"http://localhost:3000/v1/tweets"</span> <span class="se">\</span>
-     <span class="nt">--data-raw</span> <span class="s1">'body'</span>
+     <span class="nt">--data-raw</span> <span class="s2">"{body}"</span>
 </code></pre></div>
 <blockquote>
 <p>Body example</p>
@@ -577,8 +622,23 @@ This API don't have a authentication endpoint, to simulate a user token you have
 </tr>
 </tbody></table>
 <h2 id='list-tweets'>list Tweets</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/tweets"</span> <span class="se">\</span>
-     <span class="nt">--header</span> <span class="s2">"person: 1"</span>
+     <span class="nt">--header</span> <span class="s2">"person: {id}"</span>
+     <span class="nt">--data-raw</span> <span class="s2">"{body}"</span>
 </code></pre></div>
+<blockquote>
+<p>Body example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"content_cont"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organic"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created_at desc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -619,6 +679,11 @@ This API don't have a authentication endpoint, to simulate a user token you have
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET http://localhost:3000/v1/tweets</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
+<p>We are using ransack for searching, paginate and sorting the data,
+Click below to see the condition list for searching</p>
+
+<p><a href="https://github.com/activerecord-hackery/ransack#search-matchers">Filter List</a></p>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -627,12 +692,37 @@ This API don't have a authentication endpoint, to simulate a user token you have
 </tr>
 </thead><tbody>
 <tr>
-<td>ransack</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>q</td>
+<td>hash</td>
+<td>Ransack search content data</td>
+</tr>
+<tr>
+<td>q.{field}_{condition}</td>
+<td>text</td>
+<td>Search parameters</td>
+</tr>
+<tr>
+<td>s</td>
+<td>text</td>
+<td>Ransack sort data</td>
+</tr>
+<tr>
+<td>p</td>
+<td>hash</td>
+<td>Ransack pagination data</td>
+</tr>
+<tr>
+<td>q.page</td>
+<td>integer</td>
+<td>List page number</td>
+</tr>
+<tr>
+<td>q.per_page</td>
+<td>integer</td>
+<td>Data quantity per page</td>
 </tr>
 </tbody></table>
-<h2 id='delete-tweet'>Delete Tweet</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/tweets/:id"</span> <span class="se">\</span>
+<h2 id='delete-tweet'>Delete Tweet</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/tweets/{id}"</span> <span class="se">\</span>
      <span class="nt">--header</span> <span class="s2">"person: 1"</span>
 </code></pre></div>
 <blockquote>
@@ -641,7 +731,7 @@ This API don't have a authentication endpoint, to simulate a user token you have
 
 <p>This endpoint delete the tweet if belongs to logged in person</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://localhost:3000/v1/tweets/:id</code></p>
+<p><code>GET http://localhost:3000/v1/tweets/{id}</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -655,7 +745,7 @@ This API don't have a authentication endpoint, to simulate a user token you have
 </tr>
 </tbody></table>
 <h1 id='following-people'>Following People</h1><h2 id='create-follower-person'>Create Follower Person</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s2">"http://localhost:3000/v1/following_people"</span> <span class="se">\</span>
-     <span class="nt">--data-raw</span> <span class="s1">'body'</span>
+     <span class="nt">--data-raw</span> <span class="s2">"{body}"</span>
 </code></pre></div>
 <blockquote>
 <p>Body example</p>
@@ -724,8 +814,23 @@ This API don't have a authentication endpoint, to simulate a user token you have
 </tr>
 </tbody></table>
 <h2 id='list-following-people'>List Following People</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/following_people"</span> <span class="se">\</span>
-     <span class="nt">--header</span> <span class="s2">"person: 1"</span>
+     <span class="nt">--header</span> <span class="s2">"person: {id}"</span>
+     <span class="nt">--data-raw</span> <span class="s2">"{body}"</span>
 </code></pre></div>
+<blockquote>
+<p>Body example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"content_cont"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organic"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created_at desc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -776,6 +881,11 @@ This API don't have a authentication endpoint, to simulate a user token you have
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET http://localhost:3000/v1/following_people</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
+<p>We are using ransack for searching, paginate and sorting the data,
+Click below to see the condition list for searching</p>
+
+<p><a href="https://github.com/activerecord-hackery/ransack#search-matchers">Filter List</a></p>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -784,9 +894,34 @@ This API don't have a authentication endpoint, to simulate a user token you have
 </tr>
 </thead><tbody>
 <tr>
-<td>ransack</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>q</td>
+<td>hash</td>
+<td>Ransack search content data</td>
+</tr>
+<tr>
+<td>q.{field}_{condition}</td>
+<td>text</td>
+<td>Search parameters</td>
+</tr>
+<tr>
+<td>s</td>
+<td>text</td>
+<td>Ransack sort data</td>
+</tr>
+<tr>
+<td>p</td>
+<td>hash</td>
+<td>Ransack pagination data</td>
+</tr>
+<tr>
+<td>q.page</td>
+<td>integer</td>
+<td>List page number</td>
+</tr>
+<tr>
+<td>q.per_page</td>
+<td>integer</td>
+<td>Data quantity per page</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
