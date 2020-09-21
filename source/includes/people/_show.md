@@ -1,11 +1,12 @@
 ## Show Person
 
 ```shell
-curl --location --request GET "http://localhost:3000/v1/people/{id}" \
-  --header "person: {id}"
+curl --location --request GET "http://localhost:3000/v1/people/{person_id}" \
+     --header "Content-Type: application/json" \
+     --header "person: {person_id}"
 ```
 
-> The above command returns JSON structured like this:
+> Response JSON structure:
 
 ```json
 {

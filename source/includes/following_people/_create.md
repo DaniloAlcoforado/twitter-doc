@@ -4,6 +4,8 @@
 
 ```shell
 curl --location --request POST "http://localhost:3000/v1/following_people" \
+     --header "Content-Type: application/json" \
+     --header "person: {person_id}" \
      --data-raw "{body}"
 ```
 
@@ -17,7 +19,7 @@ curl --location --request POST "http://localhost:3000/v1/following_people" \
 }
 ```
 
-> The above command returns JSON structured like this:
+> Response JSON structure:
 
 ```json
 {
@@ -61,7 +63,7 @@ This endpoint create a follower relation between logged in person and sended per
 
 ### Query Parameters
 
-Parameter | Default | Description
+Parameter | Type | Description
 --------- | ------- | -----------
-following_person | hash | Hash with all person data.
+following_person | hash | Hash with all following person data.
 following_person.person_id | integer | Person to follow.

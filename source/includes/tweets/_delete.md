@@ -1,17 +1,18 @@
 ## Delete Tweet
 
 ```shell
-curl --location --request GET "http://localhost:3000/v1/tweets/{id}" \
-     --header "person: 1"
+curl --location --request DELETE "http://localhost:3000/v1/tweets/{tweet_id}" \
+     --header "Content-Type: application/json" \
+     --header "person: {person_id}"
 ```
 
-> The above command returns a empty body.
+> Response JSON structure.
 
 This endpoint delete the tweet if belongs to logged in person
 
 ### HTTP Request
 
-`GET http://localhost:3000/v1/tweets/{id}`
+`GET http://localhost:3000/v1/tweets/{tweet_id}`
 
 ### URL Parameters
 

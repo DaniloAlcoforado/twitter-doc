@@ -4,7 +4,9 @@
 
 ```shell
 curl --location --request POST "http://localhost:3000/v1/tweets" \
-     --data-raw "{body}"
+     --header "Content-Type: application/json" \
+     --header "person: {id}" \
+     --data "{body}"
 ```
 
 > Body example
@@ -17,7 +19,7 @@ curl --location --request POST "http://localhost:3000/v1/tweets" \
 }
 ```
 
-> The above command returns JSON structured like this:
+> Response JSON structure.
 
 ```json
 {
@@ -51,7 +53,7 @@ This endpoint create a tweet.
 
 ### Query Parameters
 
-Parameter | Default | Description
+Parameter | Type | Description
 --------- | ------- | -----------
-tweet | hash | Hash with all person data.
+tweet | hash | Hash with all tweet data.
 tweet.content | string | Tweet content text.

@@ -2,7 +2,8 @@
 
 ```shell
 curl --location --request GET "http://localhost:3000/v1/people" \
-     --header "person: {id}"
+     --header "Content-Type: application/json" \
+     --header "person: {person_id}" \
      --data-raw "{body}"
 ```
 
@@ -11,17 +12,17 @@ curl --location --request GET "http://localhost:3000/v1/people" \
 ```json
 {
     "q": {
-        "content_cont": "Organic"
+        "name_cont": "Moshe"
     },
     "p": {
-        "page": 2,
+        "page": 1,
         "per_page": 5
     },
-    "s": "created_at desc"
+    "s": "name asc"
 }
 ```
 
-> The above command returns JSON structured like this:
+> Response JSON structure:
 
 ```json
 {
@@ -61,7 +62,7 @@ Click below to see the condition list for searching
 
 [Filter List](https://github.com/activerecord-hackery/ransack#search-matchers)
 
-Parameter | Default | Description
+Parameter | Type | Description
 --------- | ------- | -----------
 q | hash | Ransack search content data
 q.{field}_{condition} | text | Search parameters
