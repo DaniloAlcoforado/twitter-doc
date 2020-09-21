@@ -342,13 +342,16 @@
               </ul>
           </li>
           <li>
-            <a href="#following-people" class="toc-h1 toc-link" data-title="Following People">Following People</a>
+            <a href="#followers" class="toc-h1 toc-link" data-title="Followers">Followers</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#create-follower-person" class="toc-h2 toc-link" data-title="Create Follower Person">Create Follower Person</a>
+                    <a href="#create-follower" class="toc-h2 toc-link" data-title="Create Follower">Create Follower</a>
                   </li>
                   <li>
-                    <a href="#list-following-people" class="toc-h2 toc-link" data-title="List Following People">List Following People</a>
+                    <a href="#list-followers" class="toc-h2 toc-link" data-title="List Followers">List Followers</a>
+                  </li>
+                  <li>
+                    <a href="#list-followeds" class="toc-h2 toc-link" data-title="List Followeds">List Followeds</a>
                   </li>
                   <li>
                     <a href="#delete-following-people" class="toc-h2 toc-link" data-title="Delete Following People">Delete Following People</a>
@@ -774,7 +777,7 @@ Click below to see the condition list for searching</p>
 <td>The ID of the tweet to delete</td>
 </tr>
 </tbody></table>
-<h1 id='following-people'>Following People</h1><h2 id='create-follower-person'>Create Follower Person</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s2">"http://localhost:3000/v1/following_people"</span> <span class="se">\</span>
+<h1 id='followers'>Followers</h1><h2 id='create-follower'>Create Follower</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s2">"http://localhost:3000/v1/followers"</span> <span class="se">\</span>
      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
      <span class="nt">--header</span> <span class="s2">"person: {person_id}"</span> <span class="se">\</span>
      <span class="nt">--data-raw</span> <span class="s2">"{body}"</span>
@@ -783,8 +786,8 @@ Click below to see the condition list for searching</p>
 <p>Body example</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"following_person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+    </span><span class="nl">"follower"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"followed_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -794,38 +797,18 @@ Click below to see the condition list for searching</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"following_person"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-19T14:53:29.082Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"follower"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Petrina Dicki IV"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"giovanni.schroeder@armstrong.co"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"868.801.1787"</span><span class="w">
-                    </span><span class="p">}</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"followed"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"In Lemke"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"estrella@bayer.info"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1-719-214-7274"</span><span class="w">
-                    </span><span class="p">}</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Douglass Bartoletti"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nenita.anderson@example.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"401.219.9318"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint create a follower relation between logged in person and sended person.</p>
+<p>This endpoint create a follower relation between logged in person and followed person.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST http://localhost:3000/v1/following_people</code></p>
+<p><code>POST http://localhost:3000/v1/followers</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -835,17 +818,17 @@ Click below to see the condition list for searching</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>following_person</td>
+<td>follower</td>
 <td>hash</td>
 <td>Hash with all following person data.</td>
 </tr>
 <tr>
-<td>following_person.person_id</td>
+<td>follower.followed_id</td>
 <td>integer</td>
 <td>Person to follow.</td>
 </tr>
 </tbody></table>
-<h2 id='list-following-people'>List Following People</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/following_people"</span> <span class="se">\</span>
+<h2 id='list-followers'>List Followers</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/followers"</span> <span class="se">\</span>
      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
      <span class="nt">--header</span> <span class="s2">"person: {person_id}"</span> <span class="se">\</span>
      <span class="nt">--data-raw</span> <span class="s2">"{body}"</span>
@@ -855,13 +838,13 @@ Click below to see the condition list for searching</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"person_name_cont"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moshe"</span><span class="w">
+        </span><span class="nl">"name_cont"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moshe"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="nl">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person_name asc"</span><span class="w">
+    </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name asc"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -870,34 +853,14 @@ Click below to see the condition list for searching</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"following_person"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-19T12:13:53.833Z"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"follower"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Petrina Dicki IV"</span><span class="p">,</span><span class="w">
-                            </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"giovanni.schroeder@armstrong.co"</span><span class="p">,</span><span class="w">
-                            </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"868.801.1787"</span><span class="w">
-                        </span><span class="p">}</span><span class="w">
-                    </span><span class="p">}</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="nl">"followed"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moshe Skiles"</span><span class="p">,</span><span class="w">
-                            </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"angela@beatty-mosciski.name"</span><span class="p">,</span><span class="w">
-                            </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"265-771-4092"</span><span class="w">
-                        </span><span class="p">}</span><span class="w">
-                    </span><span class="p">}</span><span class="w">
-                </span><span class="p">}</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Douglass Bartoletti"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nenita.anderson@example.com"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"401.219.9318"</span><span class="w">
             </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -905,14 +868,106 @@ Click below to see the condition list for searching</p>
             </span><span class="nl">"previous_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="nl">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+            </span><span class="nl">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint return all person that follows the logged in person.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://localhost:3000/v1/followers</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<p>We are using ransack for searching, paginate and sorting the data,
+Click below to see the condition list for searching</p>
+
+<p><a href="https://github.com/activerecord-hackery/ransack#search-matchers">Filter List</a></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>q</td>
+<td>hash</td>
+<td>Ransack search content data</td>
+</tr>
+<tr>
+<td>q.{field}_{condition}</td>
+<td>text</td>
+<td>Search parameters</td>
+</tr>
+<tr>
+<td>s</td>
+<td>text</td>
+<td>Ransack sort data</td>
+</tr>
+<tr>
+<td>p</td>
+<td>hash</td>
+<td>Ransack pagination data</td>
+</tr>
+<tr>
+<td>q.page</td>
+<td>integer</td>
+<td>List page number</td>
+</tr>
+<tr>
+<td>q.per_page</td>
+<td>integer</td>
+<td>Data quantity per page</td>
+</tr>
+</tbody></table>
+<h2 id='list-followeds'>List Followeds</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/followeds"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s2">"person: {person_id}"</span> <span class="se">\</span>
+     <span class="nt">--data-raw</span> <span class="s2">"{body}"</span>
+</code></pre></div>
+<blockquote>
+<p>Body example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name_cont"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moshe"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name asc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response JSON structure:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Douglass Bartoletti"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nenita.anderson@example.com"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"401.219.9318"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"previous_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint return all person that the logged in person follows.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://localhost:3000/v1/following_people</code></p>
+<p><code>GET http://localhost:3000/v1/followeds</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <p>We are using ransack for searching, paginate and sorting the data,
 Click below to see the condition list for searching</p>
