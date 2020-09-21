@@ -429,7 +429,7 @@ This API don't have a authentication endpoint, to simulate a user token you have
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint create a person.</p>
+<p>This endpoint creates a person.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST http://localhost:3000/v1/people</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -475,7 +475,7 @@ This API don't have a authentication endpoint, to simulate a user token you have
 </tbody></table>
 
 <aside class="warning">
-You don't need to pass the person id at header to create a person.
+There is no need to pass the person id at the request header in this endpoint.
 </aside>
 <h2 id='list-people'>List People</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"http://localhost:3000/v1/people"</span> <span class="se">\</span>
      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -526,7 +526,7 @@ You don't need to pass the person id at header to create a person.
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET http://localhost:3000/v1/people</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
-<p>We are using ransack for searching, paginate and sorting the data,
+<p>Ransank is being used for searching, paginate and sorting the data,
 Click below to see the condition list for searching</p>
 
 <p><a href="https://github.com/activerecord-hackery/ransack#search-matchers">Filter List</a></p>
@@ -666,7 +666,7 @@ Click below to see the condition list for searching</p>
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint create a tweet.</p>
+<p>This endpoint creates a tweet.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST http://localhost:3000/v1/tweets</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -755,11 +755,11 @@ Click below to see the condition list for searching</p>
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves all logged in person tweet and all following person tweet.</p>
+<p>This endpoint retrieves all tweets of the logged in person and all tweets of the people this person follows.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET http://localhost:3000/v1/tweets</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
-<p>We are using ransack for searching, paginate and sorting the data,
+<p>Ransank is being used for searching, paginate and sorting the data,
 Click below to see the condition list for searching</p>
 
 <p><a href="https://github.com/activerecord-hackery/ransack#search-matchers">Filter List</a></p>
@@ -822,7 +822,7 @@ Click below to see the condition list for searching</p>
 <p>Response JSON structure.</p>
 </blockquote>
 
-<p>This endpoint delete the tweet if belongs to logged in person</p>
+<p>This endpoint deletes the tweet if it belongs to the logged in person</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET http://localhost:3000/v1/tweets/{tweet_id}</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
@@ -834,7 +834,7 @@ Click below to see the condition list for searching</p>
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The ID of the tweet to delete</td>
+<td>The ID of the tweet to be deleted</td>
 </tr>
 </tbody></table>
 <h3 id='response-status'>Response Status</h3>
@@ -878,7 +878,7 @@ Click below to see the condition list for searching</p>
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint create a follower relation between logged in person and followed person.</p>
+<p>This endpoint creates a follower relation between logged in person and followed person.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST http://localhost:3000/v1/followers</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -957,11 +957,11 @@ Click below to see the condition list for searching</p>
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint return all person that follows the logged in person.</p>
+<p>This endpoint returns all people that follow the logged in person.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET http://localhost:3000/v1/followers</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
-<p>We are using ransack for searching, paginate and sorting the data,
+<p>Ransank is being used for searching, paginate and sorting the data,
 Click below to see the condition list for searching</p>
 
 <p><a href="https://github.com/activerecord-hackery/ransack#search-matchers">Filter List</a></p>
@@ -1061,11 +1061,11 @@ Click below to see the condition list for searching</p>
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint return all person that the logged in person follows.</p>
+<p>This endpoint returns all people that the logged in person follows.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET http://localhost:3000/v1/followeds</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
-<p>We are using ransack for searching, paginate and sorting the data,
+<p>Ransank is being used for searching, paginate and sorting the data,
 Click below to see the condition list for searching</p>
 
 <p><a href="https://github.com/activerecord-hackery/ransack#search-matchers">Filter List</a></p>
@@ -1124,7 +1124,7 @@ Click below to see the condition list for searching</p>
      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
      <span class="nt">--header</span> <span class="s2">"person: {person_id}"</span>
 </code></pre></div>
-<p>This endpoint delete the following person if is followed by logged in person</p>
+<p>This endpoint deletes the following person if it is followed by the logged in person</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET http://localhost:3000/v1/following_people/{following_person_id}</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
@@ -1136,7 +1136,7 @@ Click below to see the condition list for searching</p>
 </thead><tbody>
 <tr>
 <td>following_person_id</td>
-<td>The ID of the following person to delete</td>
+<td>The ID of the following person to be deleted</td>
 </tr>
 </tbody></table>
 <h3 id='response-status'>Response Status</h3>
