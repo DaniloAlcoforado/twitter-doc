@@ -354,7 +354,7 @@
                     <a href="#list-followeds" class="toc-h2 toc-link" data-title="List Followeds">List Followeds</a>
                   </li>
                   <li>
-                    <a href="#delete-following-people" class="toc-h2 toc-link" data-title="Delete Following People">Delete Following People</a>
+                    <a href="#delete-followers" class="toc-h2 toc-link" data-title="Delete Followers">Delete Followers</a>
                   </li>
               </ul>
           </li>
@@ -1012,7 +1012,7 @@ Click below to see the condition list for searching</p>
 <td>Data quantity per page</td>
 </tr>
 </tbody></table>
-<h2 id='delete-following-people'>Delete Following People</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> DELETE <span class="s2">"http://localhost:3000/v1/following_people/{following_person_id}"</span> <span class="se">\</span>
+<h2 id='delete-followers'>Delete Followers</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> DELETE <span class="s2">"http://localhost:3000/v1/following_people/{following_person_id}"</span> <span class="se">\</span>
      <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
      <span class="nt">--header</span> <span class="s2">"person: {person_id}"</span>
 </code></pre></div>
